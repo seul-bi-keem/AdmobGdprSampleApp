@@ -47,6 +47,8 @@ class GDPRActivity : AppCompatActivity() {
             override fun onConsentInfoUpdated(consentStatus: ConsentStatus) {
                 // User's consent status successfully updated.
                 Toast.makeText(this@GDPRActivity, "onConsentInfoUpdated ${consentStatus.name}", Toast.LENGTH_SHORT).show()
+
+                // To edit Ad providers, modify parameter
                 saveProviders(listOf(AdProviderData("google", "https://google.com"), AdProviderData("facebook", "https://facebook.com")))
                 loadForm()
             }
@@ -82,9 +84,6 @@ class GDPRActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    /**
-     * To edit ad providers, modify this method.
-     */
     private fun saveProviders(providerList : List<AdProviderData>) {
         val consentData = loadConsentData()
         val providers = hashSetOf<AdProvider>()
