@@ -9,3 +9,6 @@ Use new ConsentDebugSettings.Builder().addTestDeviceHashedId("device-hash-id") t
 
 ## admob app id 구하는 법
 https://support.google.com/admob/answer/7356431?hl=ko
+
+## reference
+https://github.com/googleads/googleads-consent-sdk-android/tree/main/consent-library/src/main/java/com/google/ads/consent
