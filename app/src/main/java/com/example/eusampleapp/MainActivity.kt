@@ -1,14 +1,19 @@
 package com.example.eusampleapp
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.google.ads.consent.AdProvider
 import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentForm
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
+import com.google.gson.Gson
 
 
 class MainActivity : ComponentActivity() {
@@ -23,16 +28,10 @@ class MainActivity : ComponentActivity() {
 
         textView = findViewById(R.id.textview)
 
-        val debugSettings = ConsentDebugSettings
-                .Builder(this)
-                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-                .addTestDeviceHashedId("TEST-DEVICE-HASH-ID")
-                .build()
+        val debugSettings = ConsentDebugSettings.Builder(this).setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
+                .addTestDeviceHashedId("TEST-DEVICE-HASH-ID").build()
 
-        val params = ConsentRequestParameters.Builder()
-                .setConsentDebugSettings(debugSettings)
-                .setTagForUnderAgeOfConsent(false)
-                .build()
+        val params = ConsentRequestParameters.Builder().setConsentDebugSettings(debugSettings).setTagForUnderAgeOfConsent(false).build()
 
         findViewById<Button>(R.id.button).setOnClickListener {
             consentInformation = UserMessagingPlatform.getConsentInformation(this)
@@ -42,12 +41,17 @@ class MainActivity : ComponentActivity() {
                 }
             }, { // Handle the error.
                 textView!!.text = it.message
-            })
+                                                          })
         }
 
         findViewById<Button>(R.id.button2).setOnClickListener {
             consentInformation?.reset()
         }
+
+        findViewById<Button>(R.id.button3).setOnClickListener {
+            startActivity(Intent(this@MainActivity, GDPRActivity::class.java))
+        }
+
     }
 
     private fun loadForm() {

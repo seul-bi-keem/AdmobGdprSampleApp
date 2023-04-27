@@ -6,9 +6,19 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textview0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Mediate Admob Console Exmaple"
+        android:layout_gravity="center" />
+
+    <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="error text"
         android:layout_gravity="center" />
 
@@ -25,5 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="click! reset gdpr"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Go to Not Mediate ADMOB Console Example"/>
 
 </LinearLayout>
